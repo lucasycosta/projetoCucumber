@@ -1,0 +1,16 @@
+# DEFINICAO LOG DA APLICACAO
+info:
+  app:
+    name: Projeto Usuario Cucumber
+
+spring:
+   application:
+      name: usuario-cucumber
+   mvc:
+      pathmatch:
+            matching-strategy: ant_path_matcher
+
+   profiles:
+      active: default, dev
+   
+  
