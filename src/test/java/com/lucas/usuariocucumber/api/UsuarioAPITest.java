@@ -1,57 +1,70 @@
 package com.lucas.usuariocucumber.api;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.lucas.usuariocucumber.domain.Usuario;
-
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
+import io.cucumber.spring.CucumberContextConfiguration;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 
-//@CucumberContextConfiguration
+@Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(OrderAnnotation.class)
+@CucumberContextConfiguration
 public class UsuarioAPITest {
 
 	private final static String BASE_URI = "http://localhost:8080/usuario";
-	
-	private static Usuario usuario; 
-	
-	/*
-	 * @Test
-	 * 
-	 * @Order(10)
-	 * 
-	 * @Given("acesso a requisição {string}") public void acesso_a_requisição(String
-	 * endpoint) { RestAssured.given() .contentType(ContentType.JSON) .when()
-	 * .get(endpoint) .then() .log().all() .statusCode(200); }
-	 */
 
-	/*
-	 * @When("criar o usuario com {string}, {string}, {string}, {string}") public
-	 * void criar_o_usuario_com_api1_api1_mail_com_data_nascimento(String nome,
-	 * String email, String cpf, String dataNascimento) {
-	 * validatableResponse.assertThat().statusCode(200).
-	 * body(body(containsString(nome))) .contentType(ContentType.JSON) .when()
-	 * .post("noticia") .then() .log().all() .statusCode(200); }
-	 */
+	private RequestSpecification httpRequest = RestAssured.given();
 
-	@When("chamar o método POST")
-	public void chamar_o_método_post() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	private Response response;
+
+	@BeforeAll
+	public static void setup() {
+		RestAssured.baseURI = BASE_URI;
+	}
+	
+	@Test
+	@Order(1)
+	@Given("que acesso o sistema")
+	public void que_acesso_o_sistema() {
+		log.debug("SERVIÇO NO AR");
 	}
 
-	@Then("o return sera status {int} e o <id> sera criado")
-	public void o_return_sera_status_e_o_id_sera_criado(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Test
+	@Order(10)
+	@Dado("a entrada dos dados do usuario {string}, {string}, {string}, {string}")
+	public void aEntradaDosDadosDoUsuario(String nome, String email, String cpf, String dataNascimento) {
+		log.debug("** REST API UsuarioAPITest - aEntradaDosDadosDoUsuario");
+		httpRequest.body("{\"cpf\": \"" + cpf + "\", \"dataNascimento\": \"" + dataNascimento + "\", \"email\": \"" + email
+				+ "\", \"nome\": \""+ nome + "\"}").contentType(ContentType.JSON);
 	}
+
+	@Test
+	@Order(20)
+	@Quando("chamar o método POST")
+	public void chamarOMétodoPOST() {
+		log.debug("** REST API UsuarioAPITest - chamarOMétodoPOST");
+		response = httpRequest.post("usuario");
+	}
+
+	@Test
+	@Order(30)
+	@Então("o return sera {int}")
+	public void oReturnSera(Integer code) {
+		log.debug("** REST API UsuarioAPITest - oReturnSera");
+		response.then().log().all().statusCode(code);
+	}
+
 }

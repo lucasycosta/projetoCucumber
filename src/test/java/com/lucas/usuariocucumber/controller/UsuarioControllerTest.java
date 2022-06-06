@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -16,13 +17,16 @@ import com.lucas.usuariocucumber.domain.Usuario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.Então;
+import io.cucumber.java.pt.Quando;
 import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.extern.slf4j.Slf4j;
 
-@TestMethodOrder(OrderAnnotation.class)
-@SpringBootTest // para rodar o spring
-@CucumberContextConfiguration
 @Slf4j
+@SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
+@CucumberContextConfiguration
 public class UsuarioControllerTest {
 
 	@Autowired
@@ -35,7 +39,7 @@ public class UsuarioControllerTest {
 	public void que_acesso_o_sistema() {
 		log.debug("SERVIÇO NO AR");
 	}
-	
+
 	@Test
 	@Order(10)
 	@When("crio um usuario no sistema")
@@ -65,7 +69,7 @@ public class UsuarioControllerTest {
 	@Order(30)
 	@When("buscar o usuario pelo id")
 	public void buscar_o_usuario_pelo_id() {
-		usuarioController.buscar((long)2);
+		usuarioController.buscar((long) 2);
 	}
 
 	@Test
@@ -80,6 +84,29 @@ public class UsuarioControllerTest {
 	@Then("o cadastro sera excluido")
 	public void o_cadastro_sera_excluido() {
 		usuarioController.excluir(usuario.getId());
+	}
+
+	Integer contador = 0;
+
+	@Test
+	@Order(51)
+	@Dado("que o valor do contador é {int}")
+	public void queOValorDoContadorÉ(Integer entrada1) {
+		contador = entrada1;
+	}
+
+	@Test
+	@Order(52)
+	@Quando("eu incrementar {int}")
+	public void euIncrementar(Integer entrada2) {
+		contador = contador + entrada2;
+	}
+
+	@Test
+	@Order(53)
+	@Então("o valor do contador será {int}")
+	public void oValorDoContadorSerá(Integer resultado) {
+		Assert.assertEquals("O valor está errado", contador, resultado);
 	}
 
 }
