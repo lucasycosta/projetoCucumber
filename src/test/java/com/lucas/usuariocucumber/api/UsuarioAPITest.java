@@ -35,12 +35,14 @@ public class UsuarioAPITest {
 		RestAssured.baseURI = BASE_URI;
 	}
 	
-	@Test
-	@Order(1)
-	@Given("que acesso o sistema")
-	public void que_acesso_o_sistema() {
-		log.debug("SERVIÇO NO AR");
-	}
+	/*
+	 * @Test
+	 * 
+	 * @Order(1)
+	 * 
+	 * @Given("que acesso o sistema") public void que_acesso_o_sistema() {
+	 * log.debug("SERVIÇO NO AR"); }
+	 */
 
 	@Test
 	@Order(10)

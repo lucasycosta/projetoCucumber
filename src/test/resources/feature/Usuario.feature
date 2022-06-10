@@ -7,11 +7,15 @@ Funcionalidade: Gerenciar Usuario
   c) Como administrador do sistema, eu quero poder buscar cada cadastro por uma interface, para obter informações </br>
   d) Como administrador do sistema, eu quero poder excluir os cadastros por uma interface, para quando o registro não for mais util </br>
 
-  Fundo:
-    Dado que acesso o sistema
+  #Fundo:
+    #Dado que acesso o sistema
+  # o backgroud serve para todos os cenários da feature, então acredito que não seja possível adiconar uma tag a ele
+  # mas é possivel adicionar os passos do backgroud no primeiro cenario, assim eles valeram para todos os cenários seguintes que
+  # tiverem a mesma tag
 
 	@unitario
   Cenário: Criar um usuario
+  	Dado que acesso o sistema
     Quando crio um usuario no sistema
     Então o usuario e cadastrado no sistema cucumber
 
