@@ -20,6 +20,6 @@ spring:
         driverClassName: org.postgresql.Driver
         url: jdbc:postgresql://localhost:5432/cucumber
         username: postgres
-        password: 14062000
+        password: postgres
           
 campo.obrigatorio: Campo Obrigatorio

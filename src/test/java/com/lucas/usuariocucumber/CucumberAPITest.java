@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import io.cucumber.junit.CucumberOptions.SnippetType;
 
-@CucumberOptions(features = "src/test/resources/feature", 
+@CucumberOptions(features = "src/test/resources/featureEMG", 
 				 snippets = SnippetType.CAMELCASE, 
 				 plugin = { "pretty", "html:target/report-html/report-api.html", "json:target/report-json/report-api.json" }, 
 				 glue = {"com.lucas.usuariocucumber.api" }, 
