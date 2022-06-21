@@ -6,15 +6,15 @@ Funcionalidade: Manter Paciente
 	Esquema do Cenario: Cadastrar um paciente 
 		Dado a insercao dos dados do paciente <nome>, <email>, <telefone>, <sexo> e <dataNascimento>
 		Quando chamar o metodo GRAVAR paciente
-		Entao o paciente e cadastrado no sistema 
+		Entao verificar se <idPaciente> foir criado
 		
 	Exemplos:
-		| nome        | email           | telefone         |sexo        |dataNascimento | 
-		| 'TesteUNT1' | 'unt1@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 
-		| 'TesteUNT2' | 'unt2@mail.com' | '(61)99999-9999' |'FEMININO'  |'01/01/2022'   | 
-		| 'TesteUNT3' | 'unt3@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 
-		| 'TesteUNT4' | 'unt4@mail.com' | '(61)99999-9999' |'FEMININO'  |'01/01/2022'   | 
-		| 'TesteUNT5' | 'unt5@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 
+		| nome        | email           | telefone         |sexo        |dataNascimento | idPaciente |
+		| 'TesteUNT1' | 'unt1@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 1          |
+		| 'TesteUNT2' | 'unt2@mail.com' | '(61)99999-9999' |'FEMININO'  |'01/01/2022'   | 2          |
+		| 'TesteUNT3' | 'unt3@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 3          |
+		| 'TesteUNT4' | 'unt4@mail.com' | '(61)99999-9999' |'FEMININO'  |'01/01/2022'   | 4          |
+		| 'TesteUNT5' | 'unt5@mail.com' | '(61)99999-9999' |'MASCULINO' |'01/01/2022'   | 5          |       
 	
 	@unitario 
 	Cenario: Listar todos paciente 

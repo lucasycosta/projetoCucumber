@@ -18,23 +18,23 @@ Funcionalidade: Comprar Acesso
 	Esquema do Cenario: Cadastrar pessoa juridica ou graducao
 		Dado a insercao dos dados de PJ <nome_empresa>, <endereco>, <cnpj>, <nome_responsavel>, <email_responsavel>, <cpf>, <telefone_responsavel>, <senha>, <numero_cartao>, <validade> e <cvv> 
 		Quando o metodo GRAVAR PJ
-		Entao PJ sera cadastrado
+		Entao verificar se <idPJ> foi criando
 		
 		Exemplos:
-	| nome_empresa        | endereco          | cnpj   | nome_responsavel   | email_responsavel   |cpf      | telefone_responsavel | senha   | numero_cartao | validade | cvv  | 
-	| 'EmpresaUnitario1'  | 'Rio de Janeiro'  | '12987'| 'Ricardo Resp'     | 'ricardo@mail.com'  | '123654'| '(61) 99999-9999'    | '123456'| '369852'      | '06/30'  | '123'| 
-	| 'EmpresaUnitario2'  | 'Goiania'         | '12987'| 'Paula Resp'       | 'paula@mail.com'    | '123654'| '(61) 99999-9999'    | '123457'| '369852'      | '06/30'  | '123'| 
+	| nome_empresa        | endereco          | cnpj   | nome_responsavel   | email_responsavel   |cpf      | telefone_responsavel | senha   | numero_cartao | validade | cvv  | idPJ |
+	| 'EmpresaUnitario1'  | 'Rio de Janeiro'  | '12987'| 'Ricardo Resp'     | 'ricardo@mail.com'  | '123654'| '(61) 99999-9999'    | '123456'| '369852'      | '06/30'  | '123'| 1    |
+	| 'EmpresaUnitario2'  | 'Goiania'         | '12987'| 'Paula Resp'       | 'paula@mail.com'    | '123654'| '(61) 99999-9999'    | '123457'| '369852'      | '06/30'  | '123'| 2    |
 	
 	@unitario
 	Esquema do Cenario: Cadastrar pessoa fisica
 		Dado a insercao dos dados de PF <nome_responsavel>, <email_responsavel>, <cpf>, <telefone_responsavel>, <senha>, <numero_cartao>, <validade> e <cvv> 
 	  Quando chamar o metodo GRAVAR PF
-	  Entao PF sera cadastrada
+	  Entao verificar se <idPF> foi criando
 	  
 	  Exemplos:
-	| nome_responsavel   | email_responsavel   |cpf      | telefone_responsavel | senha   | numero_cartao | validade | cvv  | 
-	| 'Ricardo Resp'     | 'ricardo@mail.com'  | '123654'| '(61) 99999-9999'    | '123456'| '369852'      | '06/30'  | '123'| 
-	| 'Paula Resp'       | 'paula@mail.com'    | '123654'| '(61) 99999-9999'    | '123457'| '369852'      | '06/30'  | '123'| 
+	| nome_responsavel   | email_responsavel   |cpf      | telefone_responsavel | senha   | numero_cartao | validade | cvv  | idPF |
+	| 'Ricardo Resp'     | 'ricardo@mail.com'  | '123654'| '(61) 99999-9999'    | '123456'| '369852'      | '06/30'  | '123'| 1    |
+	| 'Paula Resp'       | 'paula@mail.com'    | '123654'| '(61) 99999-9999'    | '123457'| '369852'      | '06/30'  | '123'| 2    |
 	  
 	@apirest
 	Esquema do Cenario: Cadastrar PJ ou graducao

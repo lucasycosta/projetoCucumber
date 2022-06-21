@@ -19,15 +19,15 @@ Funcionalidade: Manter profissional
 	Esquema do Cenario: Cadastrar um profissional
 		Dado a insercao de dados do profissional <nome>, <email>, <telefone>, <tipoProfissional>, <especialidade> e <credencial>
 		Quando chamar o metodo GRAVAR profissional
-		Entao o profissional sera cadastrado
+		Entao verificar se <idProfissional> foi criado
 		
 	Exemplos:
-		| nome        | email           | telefone         |tipoProfissional |especialidade   |credencial |
-		| 'TesteUNT1' | 'unt1@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     |
-		| 'TesteUNT2' | 'unt2@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     |
-		| 'TesteUNT3' | 'unt3@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     |
-		| 'TesteUNT4' | 'unt4@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     |
-		| 'TesteUNT5' | 'unt5@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     |
+		| nome        | email           | telefone         |tipoProfissional |especialidade   |credencial | idProfissional |
+		| 'TesteUNT1' | 'unt1@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     | 1              |
+		| 'TesteUNT2' | 'unt2@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     | 2              |
+		| 'TesteUNT3' | 'unt3@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     | 3              |
+		| 'TesteUNT4' | 'unt4@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     | 4              |
+		| 'TesteUNT5' | 'unt5@mail.com' | '(61)99999-9999' |'MEDICO'         |'Ortopedista'   |'1234'     | 5              |
 
 	@unitario
 	Cenario: Listar todos os profissionais 
