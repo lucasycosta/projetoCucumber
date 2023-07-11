@@ -11,6 +11,6 @@ spring:
             matching-strategy: ant_path_matcher
 
    profiles:
-      active: default, dev
+      active: default, test
    
   
